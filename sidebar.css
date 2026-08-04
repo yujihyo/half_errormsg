@@ -96,32 +96,3 @@ body {
     background: #185ddd;
 
 }
-
-@media (max-width:768px) {
-
-    #sidebar {
-
-        display: none;
-
-    }
-
-    #preview {
-
-        width: 100%;
-        min-height: 100vh;
-
-        justify-content:flex-start;
-        align-items:center;
-
-        padding:20px;
-
-    }
-
-    #captureArea {
-
-        width: 720px;
-        max-width: none;
-
-    }
-
-}
