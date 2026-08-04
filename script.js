@@ -206,31 +206,3 @@ previewPhoto1.onclick = () => {
 };
 
 previewPhoto3.onclick = previewPhoto1.onclick;
-
-function resizePreview(){
-
-    if(window.innerWidth > 768){
-
-        captureWrapper.style.height = "";
-        captureArea.style.transform = "";
-
-        return;
-    }
-
-    const baseWidth = 720;
-    const baseHeight = captureArea.scrollHeight;
-
-    const scale = Math.min(
-        (window.innerWidth - 40) / baseWidth,
-        1
-    );
-
-    captureArea.style.transformOrigin = "top center";
-    captureArea.style.transform = `scale(${scale})`;
-
-    captureWrapper.style.height = `${baseHeight * scale}px`;
-
-}
-
-window.addEventListener("resize", resizePreview);
-window.addEventListener("load", resizePreview);
