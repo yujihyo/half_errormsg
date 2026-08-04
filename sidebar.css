@@ -100,33 +100,31 @@ body{
 @media (max-width:768px){
 
     body{
-        overflow:auto;
-    }
 
-    #sidebar{
-        display:none;
-    }
+        overflow:hidden;
 
-    #container{
-        display:block;
-        width:100%;
-        height:auto;
     }
 
     #preview{
 
+        width:100vw;
+        height:100vh;
+
         display:flex;
         flex-direction:column;
-
         align-items:center;
-        justify-content:flex-start;
-
-        width:100%;
-        min-height:100vh;
-
-        padding:20px;
 
         overflow-y:auto;
+        overflow-x:hidden;
+
+        padding:20px;
+    }
+
+    #captureArea{
+
+        width:720px;
+
+        transform-origin:top center;
     }
 
 }

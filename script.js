@@ -38,7 +38,7 @@ const mobileSaveButton = document.getElementById("mobileSaveButton");
 // =============================
 
 const DEFAULT_IMAGE =
-"https://placehold.co/200x200/555555/FFFFFF";
+    "https://placehold.co/200x200/555555/FFFFFF";
 
 previewPhoto1.src = DEFAULT_IMAGE;
 previewPhoto2.src = DEFAULT_IMAGE;
@@ -94,17 +94,17 @@ message4.addEventListener("input", () => {
 // 사진 업로드
 // =============================
 
-function loadImage(input, targets){
+function loadImage(input, targets) {
 
-    if(!input.files.length) return;
+    if (!input.files.length) return;
 
     const file = input.files[0];
 
     const reader = new FileReader();
 
-    reader.onload = function(e){
+    reader.onload = function (e) {
 
-        targets.forEach(target=>{
+        targets.forEach(target => {
 
             target.src = e.target.result;
 
@@ -116,18 +116,18 @@ function loadImage(input, targets){
 
 }
 
-photoA.addEventListener("change",()=>{
+photoA.addEventListener("change", () => {
 
-    loadImage(photoA,[
+    loadImage(photoA, [
         previewPhoto1,
         previewPhoto3
     ]);
 
 });
 
-photoB.addEventListener("change",()=>{
+photoB.addEventListener("change", () => {
 
-    loadImage(photoB,[
+    loadImage(photoB, [
         previewPhoto2,
         previewPhoto4
     ]);
@@ -139,21 +139,26 @@ photoB.addEventListener("change",()=>{
 // 저장
 // =============================
 
-function saveImage(){
+function saveImage() {
 
-    html2canvas(captureArea,{
-        backgroundColor:null,
-        scale:3,
-        useCORS:true
-    }).then(canvas=>{
+    html2canvas(captureArea, {
+        backgroundColor: null,
+        scale: 3,
+        useCORS: true
+    }).then(canvas => {
 
         const url = canvas.toDataURL("image/png");
 
-        if(window.innerWidth <= 768){
+        if (window.innerWidth <= 768) {
 
-            window.open(url, "_blank");
+            const link = document.createElement("a");
 
-        }else{
+            link.href = url;
+            link.download = "notification.png";
+
+            link.click();
+
+        } else {
 
             const link = document.createElement("a");
 
@@ -170,11 +175,11 @@ function saveImage(){
 saveButton.onclick = saveImage;
 mobileSaveButton.onclick = saveImage;
 
-function editNameA(){
+function editNameA() {
 
     const value = prompt("이름을 입력하세요.", nameA.value);
 
-    if(value === null) return;
+    if (value === null) return;
 
     nameA.value = value;
 
@@ -185,7 +190,7 @@ function editNameA(){
 
 previewName1.onclick = () => {
 
-    if(window.innerWidth <= 768){
+    if (window.innerWidth <= 768) {
 
         editNameA();
 
@@ -197,7 +202,7 @@ previewName3.onclick = previewName1.onclick;
 
 previewPhoto1.onclick = () => {
 
-    if(window.innerWidth <= 768){
+    if (window.innerWidth <= 768) {
 
         photoA.click();
 
@@ -206,3 +211,27 @@ previewPhoto1.onclick = () => {
 };
 
 previewPhoto3.onclick = previewPhoto1.onclick;
+
+function resizeMobilePreview() {
+
+    if (window.innerWidth > 768) {
+
+        captureArea.style.transform = "";
+        captureArea.style.transformOrigin = "";
+        captureArea.style.width = "";
+
+        return;
+    }
+
+    const scale = Math.min(
+        (window.innerWidth - 40) / 720,
+        1
+    );
+
+    captureArea.style.transformOrigin = "top center";
+    captureArea.style.transform = `scale(${scale})`;
+
+}
+
+window.addEventListener("load", resizeMobilePreview);
+window.addEventListener("resize", resizeMobilePreview);
