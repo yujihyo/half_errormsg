@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>여권사진을 왜 나한테</title>
+
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="preview.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+
+<body>
+
+    <div id="container">
+
+        <!-- ================= 사이드바 ================= -->
+
+        <aside id="sidebar">
+
+            <h2>인물 A</h2>
+
+            <label>사진</label>
+            <input type="file" id="photoA" accept="image/*">
+
+            <label>이름</label>
+            <input type="text" id="nameA" placeholder="이름">
+
+
+            <h2>인물 B</h2>
+
+            <label>사진</label>
+            <input type="file" id="photoB" accept="image/*">
+
+            <label>이름</label>
+            <input type="text" id="nameB" placeholder="이름">
+
+
+            <h2>메시지</h2>
+
+            <label>메시지 1</label>
+            <input type="text" id="message1">
+
+            <label>메시지 2</label>
+            <input type="text" id="message2">
+
+            <label>메시지 3</label>
+            <input type="text" id="message3">
+
+            <label>메시지 4</label>
+            <input type="text" id="message4">
+
+            <button id="saveButton">
+                이미지 저장
+            </button>
+
+        </aside>
+
+        <!-- ================= 프리뷰 ================= -->
+
+        <main id="preview">
+
+            <div id="captureArea">
+
+                <!-- 알림 1 -->
+
+                <div class="notification">
+
+                    <img id="previewPhoto1" class="profile">
+
+                    <div class="text">
+
+                        <div id="previewName1" class="name">
+                            이름
+                        </div>
+
+                        <div class="messageRow">
+                            <span id="previewMessage1" class="message">
+                                메시지
+                            </span>
+
+                            <span class="time">
+                                • 지금
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="dot"></div>
+
+                </div>
+
+
+                <!-- 알림 2 -->
+
+                <div class="notification split">
+
+                    <img id="previewPhoto2" class="profile">
+
+                    <div class="text">
+
+                        <div id="previewName2" class="name">
+                            이름
+                        </div>
+
+                        <div class="messageRow">
+                            <span id="previewMessage2" class="message">
+                                메시지
+                            </span>
+
+                            <span class="time">
+                                • 지금
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="dot"></div>
+
+                </div>
+
+
+                <!-- 알림 3 -->
+
+                <div class="notification">
+
+                    <img id="previewPhoto3" class="profile">
+
+                    <div class="text">
+
+                        <div id="previewName3" class="name">
+                            이름
+                        </div>
+
+                        <div class="messageRow">
+                            <span id="previewMessage3" class="message">
+                                메시지
+                            </span>
+
+                            <span class="time">
+                                • 지금
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="dot"></div>
+
+                </div>
+
+
+                <!-- 알림 4 -->
+
+                <div class="notification">
+
+                    <img id="previewPhoto4" class="profile">
+
+                    <div class="text">
+
+                        <div id="previewName4" class="name">
+                            이름
+                        </div>
+
+                        <div class="messageRow">
+                            <span id="previewMessage4" class="message">
+                                메시지
+                            </span>
+
+                            <span class="time">
+                                • 지금
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="dot"></div>
+
+                </div>
+
+            </div>
+
+            <button id="mobileSaveButton">
+                이미지 저장
+            </button>
+
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,190 @@
+#preview{
+
+    flex:1;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:auto;
+
+    background:#dadada;
+
+}
+
+/* ========================= */
+
+#captureArea{
+
+    width:720px;
+
+    background:#111111;
+
+    padding:38px 34px;
+
+}
+
+/* ========================= */
+
+.notification{
+
+    display:flex;
+    align-items:center;
+
+    gap:18px;
+
+    position:relative;
+
+    margin-bottom:52px;
+
+}
+
+.notification.split{
+
+    margin-bottom:140px;
+
+}
+
+.notification:last-child{
+
+    margin-bottom:0;
+
+}
+
+/* ========================= */
+
+.profile{
+
+    width:72px;
+    height:72px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    background:#555;
+
+    flex-shrink:0;
+
+}
+
+/* ========================= */
+
+.text{
+
+    flex:1;
+
+}
+
+/* ========================= */
+
+.name{
+
+    color:white;
+
+    font-size:24px;
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+/* ========================= */
+
+.messageRow{
+
+    display:flex;
+    align-items:center;
+
+    gap:8px;
+
+}
+
+/* ========================= */
+
+.message{
+
+    color:#9c9c9c;
+
+    font-size:20px;
+
+}
+
+/* ========================= */
+
+.time{
+
+    color:#8d8d8d;
+
+    font-size:20px;
+
+    white-space:nowrap;
+
+}
+
+/* ========================= */
+
+.dot{
+
+    width:18px;
+    height:18px;
+
+    border-radius:50%;
+
+    background:#1d69ff;
+
+    margin-left:18px;
+
+    flex-shrink:0;
+
+}
+
+#mobileSaveButton{
+
+    display:none;
+
+}
+
+@media (max-width:768px){
+
+    #mobileSaveButton{
+
+        display:block;
+
+        width:100%;
+        max-width:720px;
+
+        height:52px;
+
+        margin-top:20px;
+
+        border:none;
+        border-radius:12px;
+
+        background:#1f6fff;
+        color:#fff;
+
+        font-size:17px;
+        font-weight:700;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .profile,
+    .name,
+    .message{
+
+        cursor:pointer;
+        transition:.15s;
+    }
+
+    .profile:active,
+    .name:active,
+    .message:active{
+
+        opacity:.6;
+    }
+
+}
