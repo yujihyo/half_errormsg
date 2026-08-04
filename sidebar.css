@@ -99,24 +99,74 @@ body{
 
 @media (max-width:768px){
 
+    body{
+        overflow:hidden;
+    }
+
     #sidebar{
-
         display:none;
-
     }
 
     #preview{
 
-        width:100%;
-        min-height:100vh;
+        width:100vw;
+        height:100vh;
 
-        padding:20px;
+        display:flex;
+        justify-content:center;
+
+        align-items:flex-start;
+
+        padding-top:5vh;
+
+        overflow:hidden;
+
     }
 
     #captureArea{
 
-        width:100%;
-        max-width:720px;
+        width:720px;
+
+        transform:scale(.47);
+
+        transform-origin:top center;
+
+        flex-shrink:0;
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    #sidebar{
+        display:none;
+    }
+
+    #preview{
+
+        width:100vw;
+        height:100vh;
+
+        display:flex;
+        justify-content:center;
+        align-items:flex-start;
+
+        padding-top:5vh;
+
+        overflow:hidden;
+
+    }
+
+    #captureArea{
+
+        width:720px;
+
+        transform:
+            scale(min(.55, calc(100vw / 760)));
+
+        transform-origin:top center;
+
     }
 
 }
