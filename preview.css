@@ -192,4 +192,22 @@
         opacity:.6;
     }
 
+    .notification{
+
+        gap:14px;
+
+    }
+
+    #captureArea{
+
+        padding:38px 22px;
+
+    }
+
+    .dot{
+
+        margin-left:8px;
+
+    }
+
 }
