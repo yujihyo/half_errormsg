@@ -198,7 +198,13 @@
 
     .dot{
 
-        margin-left:2px;
+        margin-left:8px;
+
+    }
+
+    .text{
+
+        flex:none;
 
     }
 
