@@ -193,19 +193,3 @@
     }
 
 }
-
-@media (max-width:768px){
-
-    .dot{
-
-        margin-left:8px;
-
-    }
-
-    .text{
-
-        flex:none;
-
-    }
-
-}
