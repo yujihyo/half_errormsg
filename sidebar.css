@@ -96,3 +96,40 @@ body {
     background: #185ddd;
 
 }
+
+@media (max-width:768px){
+
+    #preview{
+
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+
+        justify-content:flex-start;
+
+        padding:20px;
+
+        overflow:auto;
+    }
+
+    #captureWrapper{
+
+        width:100%;
+    }
+
+    #captureArea{
+
+        width:720px;
+
+    }
+
+    #mobileSaveButton{
+
+        display:block;
+
+        width:220px;
+
+        margin-top:24px;
+    }
+
+}
