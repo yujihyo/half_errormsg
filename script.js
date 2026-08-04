@@ -30,6 +30,7 @@ const previewMessage4 = document.getElementById("previewMessage4");
 
 const captureArea = document.getElementById("captureArea");
 const saveButton = document.getElementById("saveButton");
+const mobileSaveButton = document.getElementById("mobileSaveButton");
 
 
 // =============================
@@ -205,3 +206,28 @@ previewPhoto1.onclick = () => {
 };
 
 previewPhoto3.onclick = previewPhoto1.onclick;
+
+function resizePreview(){
+
+    if(window.innerWidth > 768){
+
+        captureArea.style.transform = "";
+        captureArea.style.height = "";
+
+        return;
+    }
+
+    const baseWidth = 720;
+    const baseHeight = 1120; // 현재 캡처영역 높이
+
+    const scale = (window.innerWidth - 40) / baseWidth;
+
+    captureArea.style.transformOrigin = "top center";
+    captureArea.style.transform = `scale(${scale})`;
+
+    captureArea.style.height = `${baseHeight * scale}px`;
+
+}
+
+window.addEventListener("resize", resizePreview);
+window.addEventListener("load", resizePreview);

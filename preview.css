@@ -151,8 +151,8 @@
 
         display:block;
 
-        width:100%;
-        max-width:720px;
+        width:calc(100vw - 40px);
+        max-width:420px;
 
         height:52px;
 
