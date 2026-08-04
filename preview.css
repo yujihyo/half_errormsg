@@ -193,3 +193,13 @@
     }
 
 }
+
+@media (max-width:768px){
+
+    .dot{
+
+        margin-left:10px;
+
+    }
+
+}
