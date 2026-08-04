@@ -31,6 +31,12 @@ const previewMessage4 = document.getElementById("previewMessage4");
 const captureArea = document.getElementById("captureArea");
 const saveButton = document.getElementById("saveButton");
 
+// =============================
+// Session Storage
+// =============================
+
+const STORAGE_KEY = "notification-editor";
+
 
 // =============================
 // 기본 이미지
@@ -39,11 +45,108 @@ const saveButton = document.getElementById("saveButton");
 const DEFAULT_IMAGE =
 "https://placehold.co/200x200/555555/FFFFFF";
 
-previewPhoto1.src = DEFAULT_IMAGE;
-previewPhoto2.src = DEFAULT_IMAGE;
-previewPhoto3.src = DEFAULT_IMAGE;
-previewPhoto4.src = DEFAULT_IMAGE;
+if(!sessionStorage.getItem(STORAGE_KEY)){
 
+    previewPhoto1.src = DEFAULT_IMAGE;
+    previewPhoto2.src = DEFAULT_IMAGE;
+    previewPhoto3.src = DEFAULT_IMAGE;
+    previewPhoto4.src = DEFAULT_IMAGE;
+
+}
+// =============================
+// 저장
+// =============================
+
+function saveState(){
+
+    const state = {
+
+        nameA: nameA.value,
+        nameB: nameB.value,
+
+        message1: message1.value,
+        message2: message2.value,
+        message3: message3.value,
+        message4: message4.value,
+
+        photoA: previewPhoto1.src,
+        photoB: previewPhoto2.src
+
+    };
+
+    sessionStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(state)
+    );
+
+}
+
+// =============================
+// 불러오기
+// =============================
+
+function loadState(){
+
+    const saved =
+        sessionStorage.getItem(STORAGE_KEY);
+
+    if(!saved) return;
+
+    const state = JSON.parse(saved);
+
+    // 이름
+
+    nameA.value = state.nameA || "";
+    nameB.value = state.nameB || "";
+
+    previewName1.textContent =
+        state.nameA || "이름";
+
+    previewName3.textContent =
+        state.nameA || "이름";
+
+    previewName2.textContent =
+        state.nameB || "이름";
+
+    previewName4.textContent =
+        state.nameB || "이름";
+
+    // 메시지
+
+    message1.value = state.message1 || "";
+    message2.value = state.message2 || "";
+    message3.value = state.message3 || "";
+    message4.value = state.message4 || "";
+
+    previewMessage1.textContent =
+        state.message1 || "메시지";
+
+    previewMessage2.textContent =
+        state.message2 || "메시지";
+
+    previewMessage3.textContent =
+        state.message3 || "메시지";
+
+    previewMessage4.textContent =
+        state.message4 || "메시지";
+
+    // 사진
+
+    if(state.photoA){
+
+        previewPhoto1.src = state.photoA;
+        previewPhoto3.src = state.photoA;
+
+    }
+
+    if(state.photoB){
+
+        previewPhoto2.src = state.photoB;
+        previewPhoto4.src = state.photoB;
+
+    }
+
+}
 
 // =============================
 // 이름
@@ -74,18 +177,22 @@ nameB.addEventListener("input", () => {
 
 message1.addEventListener("input", () => {
     previewMessage1.textContent = message1.value || "메시지";
+    saveState();
 });
 
 message2.addEventListener("input", () => {
     previewMessage2.textContent = message2.value || "메시지";
+    saveState();
 });
 
 message3.addEventListener("input", () => {
     previewMessage3.textContent = message3.value || "메시지";
+    saveState();
 });
 
 message4.addEventListener("input", () => {
     previewMessage4.textContent = message4.value || "메시지";
+    saveState();
 });
 
 
@@ -108,6 +215,8 @@ function loadImage(input, targets){
             target.src = e.target.result;
 
         });
+
+        saveState();
 
     };
 
@@ -190,6 +299,8 @@ function editNameA(){
     previewName1.textContent = value || "이름";
     previewName3.textContent = value || "이름";
 
+    saveState();
+
 }
 
 function editNameB(){
@@ -202,6 +313,8 @@ function editNameB(){
 
     previewName2.textContent = value || "이름";
     previewName4.textContent = value || "이름";
+
+    saveState();
 
 }
 
@@ -266,6 +379,8 @@ function editMessage(input, preview){
 
     preview.textContent = value || "메시지";
 
+    saveState();
+
 }
 
 previewMessage1.onclick = () => {
@@ -307,3 +422,35 @@ previewMessage4.onclick = () => {
     }
 
 };
+
+loadState();
+
+// =============================
+// Notice Modal
+// =============================
+
+const noticeModal =
+    document.getElementById("noticeModal");
+
+const noticeClose =
+    document.getElementById("noticeClose");
+
+const NOTICE_KEY =
+    "wikistlist-notice";
+
+if(sessionStorage.getItem(NOTICE_KEY)){
+
+    noticeModal.style.display = "none";
+
+}
+
+noticeClose.addEventListener("click",()=>{
+
+    noticeModal.style.display = "none";
+
+    sessionStorage.setItem(
+        NOTICE_KEY,
+        "checked"
+    );
+
+});
