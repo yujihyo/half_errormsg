@@ -146,18 +146,26 @@ function saveImage(){
         useCORS:true
     }).then(canvas=>{
 
-        const url = canvas.toDataURL("image/png");
-
         if(window.innerWidth <= 768){
 
-            window.open(url, "_blank");
+            canvas.toBlob(function(blob){
+
+                const url = URL.createObjectURL(blob);
+
+                window.open(url, "_blank");
+
+                setTimeout(()=>{
+                    URL.revokeObjectURL(url);
+                },10000);
+
+            },"image/png");
 
         }else{
 
             const link = document.createElement("a");
 
             link.download = "notification.png";
-            link.href = url;
+            link.href = canvas.toDataURL("image/png");
             link.click();
 
         }
@@ -169,6 +177,8 @@ function saveImage(){
 saveButton.onclick = saveImage;
 mobileSaveButton.onclick = saveImage;
 
+/*이름*/
+
 function editNameA(){
 
     const value = prompt("이름을 입력하세요.", nameA.value);
@@ -179,6 +189,19 @@ function editNameA(){
 
     previewName1.textContent = value || "이름";
     previewName3.textContent = value || "이름";
+
+}
+
+function editNameB(){
+
+    const value = prompt("이름을 입력하세요.", nameB.value);
+
+    if(value === null) return;
+
+    nameB.value = value;
+
+    previewName2.textContent = value || "이름";
+    previewName4.textContent = value || "이름";
 
 }
 
@@ -194,6 +217,20 @@ previewName1.onclick = () => {
 
 previewName3.onclick = previewName1.onclick;
 
+previewName2.onclick = () => {
+
+    if(window.innerWidth <= 768){
+
+        editNameB();
+
+    }
+
+};
+
+previewName4.onclick = previewName2.onclick;
+
+
+/*사진*/
 previewPhoto1.onclick = () => {
 
     if(window.innerWidth <= 768){
@@ -205,3 +242,68 @@ previewPhoto1.onclick = () => {
 };
 
 previewPhoto3.onclick = previewPhoto1.onclick;
+
+previewPhoto2.onclick = () => {
+
+    if(window.innerWidth <= 768){
+
+        photoB.click();
+
+    }
+
+};
+
+previewPhoto4.onclick = previewPhoto2.onclick;
+
+/*메시지*/
+function editMessage(input, preview){
+
+    const value = prompt("메시지를 입력하세요.", input.value);
+
+    if(value === null) return;
+
+    input.value = value;
+
+    preview.textContent = value || "메시지";
+
+}
+
+previewMessage1.onclick = () => {
+
+    if(window.innerWidth <= 768){
+
+        editMessage(message1, previewMessage1);
+
+    }
+
+};
+
+previewMessage2.onclick = () => {
+
+    if(window.innerWidth <= 768){
+
+        editMessage(message2, previewMessage2);
+
+    }
+
+};
+
+previewMessage3.onclick = () => {
+
+    if(window.innerWidth <= 768){
+
+        editMessage(message3, previewMessage3);
+
+    }
+
+};
+
+previewMessage4.onclick = () => {
+
+    if(window.innerWidth <= 768){
+
+        editMessage(message4, previewMessage4);
+
+    }
+
+};
