@@ -99,24 +99,34 @@ body{
 
 @media (max-width:768px){
 
+    body{
+        overflow:auto;
+    }
+
     #sidebar{
-
         display:none;
+    }
 
+    #container{
+        display:block;
+        width:100%;
+        height:auto;
     }
 
     #preview{
+
+        display:flex;
+        flex-direction:column;
+
+        align-items:center;
+        justify-content:flex-start;
 
         width:100%;
         min-height:100vh;
 
         padding:20px;
-    }
 
-    #captureArea{
-
-        width:100%;
-        max-width:720px;
+        overflow-y:auto;
     }
 
 }
