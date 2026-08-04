@@ -16,7 +16,7 @@
 
 #captureArea{
 
-    width:720px;
+    width:600px;
 
     background:#111111;
 
@@ -72,8 +72,7 @@
 
 .text{
 
-    flex:1;
-
+    flex:0 0 380px;
 }
 
 /* ========================= */
